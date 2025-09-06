@@ -109,7 +109,7 @@ The combinations in the library are provided in human-readable laser link trajec
 
 ## Unified Naming Format of Combination
 
-Let $GC^{n, g}$ denote the set of geometric TDI combinations of length n and generation g, with individual combinations represented as $GC^{n, g}_{i}$, where n ∈ { 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 } and g ∈ { 1.5, 2, 2.5, 3, 3.5} correspond to modified first-generation, second-generation, modified second-generation, third-generation and modified third-generation TDI combinations, respectively. The index $i$ represents the sequential numbering of combinations within each set.
+Let $GC^{n, g}$ denote the set of geometric TDI combinations of length $n$ and generation $g$, with individual combinations represented as $GC^{n, g}_{i}$, where $n \in \{ 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 \}$ and $g \in \{ 1.5, 2, 2.5, 3, 3.5\}$ correspond to modified first-generation, second-generation, modified second-generation, third-generation and modified third-generation TDI combinations, respectively. The index $i$ represents the sequential numbering of combinations within each set.
 
 
 ## Usage Examples
@@ -156,14 +156,3 @@ The library includes tools to identify equivalent TDI combinations through trans
 ## Contact
 
 For questions or contributions, please open an issue or pull request on GitHub.
-
-### Mathematica Functions
-
-The combination library file `functions_GTDI.nb` contains relevant functions and examples, which need to be opened with Mathematica. The provided functionalities include:
-
-- Reading geometric TDI combination information;
-- Transforming the path of geometric TDI combinations;
-- Converting the format of geometric TDI combinations;
-- Plotting the spacetime diagram of geometric TDI;
-- Calculating and plotting the sensitivity function of TDI combinations;
-- Finding equivalent TDI combinations.
