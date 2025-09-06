@@ -1,12 +1,29 @@
-**GTDI** is a geometric time delay interferometry combination library.
+# Geometric Time Delay Interferometry (GTDI) Combination Library
 
-### Introduction to Geometric TDI
+## Overview
 
-Geometric Time Delay Interferometry (Geometric TDI) is a post-processing technique used in space-based gravitational wave detectors (e.g., LISA, Tianqin and Taiji) to suppress laser noises. Its core idea involves constructing a virtual equal-arm interferometer by applying time delays and linear combinations to phase measurement data from detector links, thereby suppressing laser noise.
+This repository provides a comprehensive library of Geometric Time-Delay Interferometry (GTDI) combinations for space-based gravitational wave detectors like LISA, Tianqin and Taiji. The library includes:
 
-### Library Overview
+- Modified first-generation  TDI combinations (8-22 links)
+- Second-generation TDI combinations (12-28 links)
+- Modified second-generation TDI combinations (16-30 links)
+- Third-generation TDI combinations (24-30 links) (as an attempt, to be tested)
+- Modified third-generation TDI combinations (24-30 links) (as an attempt, to be tested)
 
-The library covers TDI combinations for 8-30 links, and the data files are stored in the folder `data` in the `.txt` format. The file naming convention is `a-b-c(-d).txt`, with the specific meanings as follows:
+## File Structure
+
+```
+GTDI/
+├── data/                      # TDI combination data files
+│   ├── 08-m1g-TDI.txt         # 8-link modified first-generation TDI combinations
+│   ├── 10-m1g-TDI.txt         # 10-link modified first-generation TDI combinations
+│   ├── ...                    # Other combination files
+└── functions_GTDI.wl          # Mathematica program with analysis functions and examples
+```
+
+## Data Files
+
+the data files are stored in the folder `data` in the `.txt` format. The file naming convention is `a-b-c(-d).txt`, with the specific meanings as follows:
 
 - `a`: represents the number of links;
 - `b`: represents the generation of the TDI combination:
@@ -85,10 +102,60 @@ There are 62 data files in the combination library, with the specific informatio
 |  61  |   30-m3g-TDI.txt    |  30   |    3.5     |             452             |                        ×                         |
 |  62  |  30-m3g-TDI-SF.txt  |  30   |    3.5     |              3              |                        √                         |
 
-The combinations in the library are recorded as laser trajectory strings, such as `1<2<1<3>2>3<1<2<1>3<2>1>2>1>2<3>1`, where:
+The combinations in the library are provided in human-readable laser link trajectory format, such as `1<2<1<3>2>3<1<2<1>3<2>1>2>1>2<3>1`, where:
 
 - Numbers represent spacecraft indices;
-- `<` and `>` indicate the direction of the virtual laser path in time (forward or backward).
+- `<` and `>` indicate the direction of the virtual optical path in time (forward or backward).
+
+## Unified Naming Format of Combination
+
+Let $GC^{n, g}$ denote the set of geometric TDI combinations of length n and generation g, with individual combinations represented as $GC^{n, g}_{i}$, where n ∈ { 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 } and g ∈ { 1.5, 2, 2.5, 3, 3.5} correspond to modified first-generation, second-generation, modified second-generation, third-generation and modified third-generation TDI combinations, respectively. The index $i$ represents the sequential numbering of combinations within each set.
+
+
+## Usage Examples
+
+### Loading  Combinations
+
+```
+data[12, "2g-TDI"] = Import[NotebookDirectory[] <> "data\\12-2g-TDI.txt", "Lines"];
+```
+
+### Plotting Spacetime Diagram
+
+```
+spaceTimePlot2[data[12, "2g-TDI"][[1]], 
+ PlotLabel -> labelFromIndex[{12, 2, 1}]]
+```
+
+### Calculate and view the information of a TDI combination
+
+```
+informationTDI@data[12, "2g-TDI"][[1]]
+```
+
+This displays:
+
+- Laser link trajectory
+- Coordinate format
+- Defining formula
+- Laser noise residual
+- Evaluation indices
+- Polynomial vector formats
+
+### Sensitivity Curve Plotting
+
+```
+sensitivityFunctionPlot["path"][data[12, "2g-TDI"][[1]], 
+ PlotLegends -> {labelFromIndex[{12, 2, 1}]}]
+```
+
+### Equivalent Combinations
+
+The library includes tools to identify equivalent TDI combinations through transformations.
+
+## Contact
+
+For questions or contributions, please open an issue or pull request on GitHub.
 
 ### Mathematica Functions
 
